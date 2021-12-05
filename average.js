@@ -1,6 +1,12 @@
 
 function average(numbers) {
-  return numbers.reduce((p, c)=> p + c, 0) / numbers.length;
+  var noOfNans = 0;
+  return numbers.reduce((total, i) => {
+    if (!isNaN(i)) return total + i;
+    noOfNans++;
+
+    return total;
+  }, 0) / (numbers.length - noOfNans);
 }
 
-module.exports = {average};
+module.exports = { average };
