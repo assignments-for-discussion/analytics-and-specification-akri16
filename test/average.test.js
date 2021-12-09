@@ -14,3 +14,9 @@ it('reports the average as NaN on an empty list', ()=> {
 it('ignores NaN in the input', ()=> {
   expect(average([1, NaN, 2])).to.be.approximately(1.5, 0.01);
 });
+
+describe("Check if the function detects when the sensor is faulty", ()=>{
+  it('reports the average as NaN when more than 75% of the reading are NaN', ()=> {
+    expect(average([NaN, NaN, NaN, NaN, NaN, 1, NaN])).to.be.NaN;
+  })
+})
