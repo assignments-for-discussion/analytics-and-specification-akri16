@@ -1,7 +1,7 @@
 const SENSOR_FAULTY_THRESHOLD = 0.25;
 
 function average(numbers) {
-  var noOfNans = 0;
+  let noOfNans = 0;
   const len = numbers.length;
 
   const total = numbers.reduce((total, no) => {
@@ -17,4 +17,4 @@ function average(numbers) {
   return effLen / len < SENSOR_FAULTY_THRESHOLD ? NaN : avg;
 }
 
-module.exports = { average };
+module.exports = {average};
