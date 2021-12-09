@@ -1,8 +1,8 @@
 
 function average(numbers) {
   var noOfNans = 0;
-  return numbers.reduce((total, i) => {
-    if (!isNaN(i)) return total + i;
+  return numbers.reduce((total, no) => {
+    if (!isNaN(no)) return total + no;
     noOfNans++;
 
     return total;
