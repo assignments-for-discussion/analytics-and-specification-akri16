@@ -1,20 +1,25 @@
+// Render the sensor faulty if threre are more than 25% of NaNs in the data
 const SENSOR_FAULTY_THRESHOLD = 0.25;
 
-function average(numbers) {
-  let noOfNans = 0;
+function calculateAverage(numbers) {
   const len = numbers.length;
+  return numbers.reduce((partSum, no) => partSum + no, 0) / len;
+}
 
-  const total = numbers.reduce((total, no) => {
-    if (!isNaN(no)) return total + no;
-    noOfNans++;
+function average(numbers) {
+  const originalLength = numbers.length;
 
-    return total;
-  }, 0);
+  // Remove NaNs from the data
+  numbers = numbers.filter((no) => !isNaN(no));
 
-  const effLen = (len - noOfNans);
-  const avg = total / effLen;
+  // Check if the sensor is faulty
+  const nanFraction = numbers.length / originalLength;
+  if (nanFraction < SENSOR_FAULTY_THRESHOLD) {
+    return NaN;
+  }
 
-  return effLen / len < SENSOR_FAULTY_THRESHOLD ? NaN : avg;
+  // Calculate the average
+  return calculateAverage(numbers);
 }
 
 module.exports = {average};

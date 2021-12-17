@@ -21,3 +21,4 @@ describe('Check if the function detects when the sensor is faulty', () => {
         expect(average([NaN, NaN, NaN, NaN, NaN, 1, NaN])).to.be.NaN;
       });
 });
+
