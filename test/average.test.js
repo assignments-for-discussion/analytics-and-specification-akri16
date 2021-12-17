@@ -22,3 +22,9 @@ describe('Check if the function detects when the sensor is faulty', () => {
       });
 });
 
+describe('Checks if the function removes outliers', () => {
+  it(`Checks if the function removes outliers`, () => {
+    const data = [1, 2, 3, 6, 3600];
+    expect(average(data)).to.be.approximately(3, 0.01);
+  });
+});
